@@ -1,5 +1,7 @@
 ArchtexxApp::Application.routes.draw do
-  
+  resources :users
+
+
   # root route
   root 'static_pages#home'
 
