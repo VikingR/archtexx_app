@@ -1,9 +1,9 @@
 class User < ActiveRecord::Base
   # Before saving to the DB, lowercase the email of the current object
   before_save { self.email = email.downcase }
-  # Run method before saving
+  # Before saving a new user to DB, generate a remember-token
   before_create :create_remember_token
-
+  
   validates :name, presence: true, length: { maximum: 50 }
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

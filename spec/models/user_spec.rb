@@ -54,12 +54,16 @@ describe User do
     it { should be_invalid }
   end
 
+  ## Remember token
   describe "remember token" do
     before { @user.save }
     # remember: subject is the user
     its(:remember_token) { should_not be_blank }
   end
 
+
+
+  ## Email Format
   describe "when email format is invalid" do
     it "should be invalid" do
       addresses = %w[user@foo,com user_at_foo.org example.user@foo.
@@ -82,7 +86,7 @@ describe User do
   end
 
 
-  ########UNIQUENESS##################
+  ## Email Uniqueness
   describe "when email address is already taken" do
     before do
       user_with_same_email = @user.dup
